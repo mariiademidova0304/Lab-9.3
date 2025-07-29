@@ -18,12 +18,12 @@ import type { TaskStatus } from "../../types";
 //   onDelete: (taskId: string) => void;
 // }
 
+//list item that displays a task object, notifies parent that select menu was changed or delete button clicked
+//it passes changed task's id and new status and the id of the task to delete
 export default function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps) {
-const [status, setStatus] = useState<TaskStatus>(task.status)
 
 const handleStatusChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
     const updatedStatus = event.target.value;
-    setStatus(updatedStatus as TaskStatus);
     onStatusChange(task.id, updatedStatus as TaskStatus);
 }
 
@@ -47,7 +47,7 @@ const deleteTask = () => {
                 </div>
             </div>
             <div style={{display: 'flex', justifyContent:'flex-end'}}>
-                <select value={status} onChange={handleStatusChange}>
+                <select value={task.status} onChange={handleStatusChange}>
                     <option value='pending'>Pending</option>
                     <option value='in-progress'>In progress</option>
                     <option value='completed'>Completed</option>
