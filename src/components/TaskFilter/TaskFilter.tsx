@@ -1,15 +1,10 @@
-import type { Task, TaskFilterProps } from "../../types";
+import type { TaskFilterProps } from "../../types";
 import type { TaskStatus } from "../../types";
 
-// export interface TaskFilterProps {
-//   onFilterChange: (filters: {
-//     status?: TaskStatus;
-//     priority?: 'low' | 'medium' | 'high';
-//   }) => void;
-// }
-
+//filtering tasks while only having a function as a prop that's gonna be called by the parent that has more
+//details on tasks
 export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
-
+//filter by status, if the option is all - we don't actually pass an empty filter which should return original
     const filterStatus = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const filteredStatus = event.target.value;
         if (filteredStatus === 'all') {
@@ -19,7 +14,7 @@ export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
         }
     }
 
-
+//filtering by priority
     const filterPriority = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const filteredPriority = event.target.value;
         if (filteredPriority === 'all') {
