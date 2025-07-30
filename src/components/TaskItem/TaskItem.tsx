@@ -40,13 +40,13 @@ const deleteTask = () => {
                     <span style={{
                         color:
                             task.priority === 'low' ? 'green' :
-                                task.priority === 'medium' ? 'yellow' : 'red'
+                                task.priority === 'medium' ? 'orange' : 'red'
                     }}>
                         Priority: {task.priority}</span>
                     <span>Due date: {task.dueDate}</span>
                 </div>
             </div>
-            <div style={{display: 'flex', justifyContent:'flex-end'}}>
+            <div style={{display: 'flex', justifyContent:'flex-end',height:'fit-content'}}>
                 <select value={task.status} onChange={handleStatusChange}>
                     <option value='pending'>Pending</option>
                     <option value='in-progress'>In progress</option>

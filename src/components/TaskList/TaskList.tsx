@@ -26,25 +26,25 @@ import { useState } from "react";
 //apparently this is a sign that outer component is going to be handling logic, will need to change this
 //will have to take those to the app component, I think, as well as state
 export default function TaskList({tasks, onStatusChange, onDelete} : TaskListProps){
-    const [displayingTasks, setDisplayingTasks] = useState<Task[]>(tasks)
+    // const [displayingTasks, setDisplayingTasks] = useState<Task[]>(tasks)
 
-    const changeTaskStatus = (taskId: string, newStatus: TaskStatus) => {
-        setDisplayingTasks(prevDisplayingTasks =>
-            prevDisplayingTasks.map(task =>
-                task.id === taskId ? {...task, status: newStatus} : task
-            )
-        )
-    }
+    // const changeTaskStatus = (taskId: string, newStatus: TaskStatus) => {
+    //     setDisplayingTasks(prevDisplayingTasks =>
+    //         prevDisplayingTasks.map(task =>
+    //             task.id === taskId ? {...task, status: newStatus} : task
+    //         )
+    //     )
+    // }
 
-    const deleteTask = (taskId: string) => {
-        setDisplayingTasks(prevDisplayingTasks => 
-            prevDisplayingTasks.filter(task => task.id !== taskId)
-        )
-    }
+    // const deleteTask = (taskId: string) => {
+    //     setDisplayingTasks(prevDisplayingTasks => 
+    //         prevDisplayingTasks.filter(task => task.id !== taskId)
+    //     )
+    // }
     
-    const taskList = displayingTasks.map((task) =>
+    const taskList = tasks.map((task) =>
         <li key={task.id}>
-            <TaskItem task={task} onStatusChange={changeTaskStatus} onDelete={deleteTask}/>
+            <TaskItem task={task} onStatusChange={onStatusChange} onDelete={onDelete}/>
         </li>
     );
 
